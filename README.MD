@@ -16,7 +16,7 @@ Modifique a string de conexão no arquivo local.settings.json se caso necessári
 
 #### 🔄 Executar a aplicação
 
-- Criar Migrations no Visual Studio e Update da database SQLServer .
+- Criar Migrations EntityFramework no Visual Studio e Update da database SQLServer .
 
 ```bash 
 Install-Package Microsoft.EntityFrameworkCore.Tools
