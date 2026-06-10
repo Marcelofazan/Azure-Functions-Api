@@ -10,7 +10,7 @@ O que voçê vai ver nesse Projeto
 
 🔄 Executar a aplicação
 
-- Criar Migrations e Update Database SQLServer 
+- Criar Migrations no Visual Studio e Update da database SQLServer .
 
 ```bash 
 Install-Package Microsoft.EntityFrameworkCore.Tools
@@ -21,15 +21,13 @@ Update-Database -StartupProject "ApiFunctionsAzure"
 #### 🧪 Executar Functions
 Importar Coleção de testes que contém no diretório Postman **APIFunctionsAzure.postman_collection**
 
-
 | Metodo | Descrição |
 |-----------|-----------|
-| ApagarProduto: [DELETE] | http://localhost:7006/api/ApagarProduto/{id} |
-| AtualizarProduto: [PUT] | http://localhost:7006/api/AtualizarProduto |
-| BuscarProduto: [GET] |  http://localhost:7006/api/BuscarProduto/{id} |
-| BuscarProdutos: [GET] | http://localhost:7006/api/BuscarProdutos |
 | RegistrarProduto: [POST] | http://localhost:7006/api/RegistrarProduto|
-
+| BuscarProdutos: [GET] | http://localhost:7006/api/BuscarProdutos |
+| BuscarProduto: [GET] |  http://localhost:7006/api/BuscarProduto/{id} |
+| AtualizarProduto: [PUT] | http://localhost:7006/api/AtualizarProduto |
+| ApagarProduto: [DELETE] | http://localhost:7006/api/ApagarProduto/{id} |
 
 #### ⚠️ String de conexão do banco
 Modifique a string de conexão no arquivo local.settings.json se caso necessário, no trecho indicado:
