@@ -19,24 +19,37 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration Release'
 
-# 3. Executa as Functions em segundo plano e dispara os testes contra os endpoints
 - script: |
-    echo "Navegando para a pasta do projeto da Azure Function..."
-    # SUBSTITUA 'NomeDoSeuProjeto' pelo nome real da pasta onde está o seu host.json
-    cd src/NomeDoSeuProjeto 
-
-    echo "Iniciando a Azure Function localmente no agente..."
-    # 'func start' roda em segundo plano (&) para o pipeline não travar esperando
+    echo "=== Buscando a pasta raiz do projeto Azure Function ==="
+    # Localiza dinamicamente a pasta que contém o arquivo host.json
+    FUNCTION_DIR=$(dirname $(find . -name "host.json" -print -quit))
+    
+    if [ -z "$FUNCTION_DIR" ]; then
+      echo "ERRO: Não foi possível encontrar nenhum arquivo host.json no repositório!"
+      exit 1
+    fi
+    
+    echo "Pasta da Function encontrada: $FUNCTION_DIR"
+    
+    echo "=== Iniciando a Azure Function localmente no agente ==="
+    cd "$FUNCTION_DIR"
     func start --csharp & 
     
     echo "Aguardando 15 segundos para a Function inicializar totalmente..."
     sleep 15
     
-    echo "Voltando para a raiz para executar os testes..."
-    cd ../..
+    echo "=== Retornando para a raiz do repositório ==="
+    cd "$BUILD_SOURCESDIRECTORY"
     
-    echo "Executando os testes de integração..."
-    dotnet test --configuration Release --logger:"trx;LogFileName=test_results.trx"
+    echo "=== Buscando o arquivo de Solução (.sln) ou Projeto (.csproj) ==="
+    # Localiza o arquivo de solução principal para rodar os testes
+    SOLUTION_FILE=$(find . -name "*.sln" -print -quit)
+    if [ -z "$SOLUTION_FILE" ]; then
+      SOLUTION_FILE=$(find . -name "*.csproj" -print -quit)
+    fi
+
+    echo "Executando os testes usando: $SOLUTION_FILE"
+    dotnet test "$SOLUTION_FILE" --configuration Release --logger:"trx;LogFileName=test_results.trx"
   displayName: 'Executar e Testar Endpoints'
 
 # 4. Publica os resultados do teste na interface gráfica do Azure DevOps
