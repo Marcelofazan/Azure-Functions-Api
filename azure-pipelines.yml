@@ -21,14 +21,21 @@ steps:
 
 # 3. Executa as Functions em segundo plano e dispara os testes contra os endpoints
 - script: |
+    echo "Navegando para a pasta do projeto da Azure Function..."
+    # SUBSTITUA 'NomeDoSeuProjeto' pelo nome real da pasta onde está o seu host.json
+    cd src/NomeDoSeuProjeto 
+
     echo "Iniciando a Azure Function localmente no agente..."
     # 'func start' roda em segundo plano (&) para o pipeline não travar esperando
     func start --csharp & 
     
-    echo "Aguardando 10 segundos para a Function inicializar totalmente..."
-    sleep 10
+    echo "Aguardando 15 segundos para a Function inicializar totalmente..."
+    sleep 15
     
-    echo "Executando os testes de integração contra os endpoints locais (http://localhost:7071)..."
+    echo "Voltando para a raiz para executar os testes..."
+    cd ../..
+    
+    echo "Executando os testes de integração..."
     dotnet test --configuration Release --logger:"trx;LogFileName=test_results.trx"
   displayName: 'Executar e Testar Endpoints'
 
