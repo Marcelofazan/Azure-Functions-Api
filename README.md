@@ -9,6 +9,7 @@ Exemplo de requisições API com Triggers Azure Functions em C# .NET Core 10 com
 | Computação em Nuvem | Infraestrutura global de data centers para hospedar, gerenciar e escalar aplicativos e dados pela internet |
 
 #### 💬 Requisitos do Projeto
+- Necessário Emulador Azurite instalado
 - Realizar Migrations EntityFramework .NET
   
 #### ⚠️ String de conexão do banco
