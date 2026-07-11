@@ -2,7 +2,7 @@
 Exemplo de requisições API com Triggers Azure Functions em C# .NET Core 10 com banco de dados SQL-Server.
 
 #### 🎨 Aqui está uma demonstração do projeto
-<img width="976" height="506" alt="Azure_Functions" src="https://github.com/user-attachments/assets/b385b370-e67a-407c-9aca-08adb29f961a" />
+<img width="600" height="350" alt="Azure_Functions" src="https://github.com/user-attachments/assets/b385b370-e67a-407c-9aca-08adb29f961a" />
 
 #### 📋 O que você vai encontrar neste projeto
 
