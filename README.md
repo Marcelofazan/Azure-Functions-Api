@@ -1,4 +1,4 @@
-## ⚙️ Azure-Functions-Api10
+## ⚙️ Azure-Functions-Api
 Exemplo de criar Triggers Azure Functions com funções de API em C# .NET Core 10 EF com banco de dados SQL-Server.
 
 #### 🎨 Aqui está uma demonstração do projeto
