@@ -1,4 +1,4 @@
-## ⚙️ Azure-Functions-Api
+## ⚙️ Azure-Functions-Rest
 Exemplo de criar  HTTP Trigger Azure Functions com funções REST em C# .NET Core 10 EF com banco de dados SQL-Server.
 
 #### 🎨 Aqui está uma demonstração do projeto
